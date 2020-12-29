@@ -1,0 +1,52 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<hr>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table *ngIf="members" class="table user-list">
+                            <thead>
+                                <tr>
+                                <th><span>User</span></th>
+                                <th><span>Country</span></th>
+                                <th><span>City</span></th>
+                                <th><span>Phone</span></th>
+                                <th><span>Email</span></th>
+                                <th><span>Created</span></th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let member of members">
+                                    <td>
+                                        <img src="{{member.photoUrl}}" alt="">
+                                        <a routerLink='members/{{member.username}}' class="user-link">{{member.username |titlecase}}</a>
+                                    </td>
+                                    
+                                    <!-- <td class="text-center">
+                                        <span class="label label-danger">inactive</span>
+                                    </td> -->
+                                    <td>
+                                        <a>{{member.country}}</a>
+                                    </td>
+                                    <td>
+                                        <a>{{member.city}}</a>
+                                    </td>
+                                    <td>
+                                        <a>{{member.email}}</a>
+                                    </td>
+                                    <td>
+                                        <a>{{member.phoneNumber}}</a>
+                                    </td>
+                                    <td>{{member.created | date: 'dd MMM yyyy'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

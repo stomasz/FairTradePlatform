@@ -1,0 +1,76 @@
+
+            <div class="row">
+                <div class="col-md-4">
+                <form *ngIf="offer" #editOfferForm="ngForm" (ngSubmit)="updateOffer()" class="form-horizontal">
+                    <fieldset>
+    
+                        <legend>Edit Offer</legend>
+    
+                        <div class="form-group">
+                            <label class="control-label" for="title">Title</label>
+                            <div>
+                                <input [(ngModel)]="offer.title" name="title" type="text" class="form-control">
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label class="control-label" for="shipingTimeInDays">Shipping Time</label>
+                            <div>
+                                <input [(ngModel)]="offer.shipingTimeInDays" id="shipingTimeInDays" name="shipingTimeInDays"
+                                    type="number" class="form-control">
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label class="control-label" for="unitType">Unit type</label>
+                            <div>
+                                <input [(ngModel)]="offer.unitType" id="unitType" name="unitType" type="text"
+                                    class="form-control">
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label class="control-label" for="minUnits">Minimum Order Quantity</label>
+                            <div>
+                                <input [(ngModel)]="offer.minUnits" id="minUnits" name="minUnits" type="number"
+                                    class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="minUnits">Price per unit</label>
+                            <div>
+                                <input [(ngModel)]="offer.unitPrice" id="unitPrice" name="unitPrice" type="number"
+                                    class="form-control">
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label class="control-label" for="textarea">Description</label>
+                            <div>
+                                <textarea [(ngModel)]="offer.description" class="form-control" rows="10" id="textarea"
+                                    name="description"></textarea>
+                            </div>
+                        </div>
+    
+    
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <button [disabled]="!editOfferForm.dirty" type="submit"
+                                    class="btn btn-success">Save</button>
+                            </div>
+                        </div>
+    
+    
+                    </fieldset>
+                </form>
+            </div>
+            
+            <div class="col-md-7">
+                <app-offer-photo-editor *ngIf="offer" [offer]="offer"></app-offer-photo-editor>
+            </div>
+        </div>
+            
+  

@@ -1,0 +1,78 @@
+<div class="row" *ngIf="member">
+    <div class="col-4">
+        <h1>Your profile</h1>
+    </div>
+    <div class="col-8">
+        <div class="alert alert-info" *ngIf="editMemberForm.dirty">
+            <strong>Information: </strong> You have made changes.  Any unsaved changes will be lost
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.username}}"
+                class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div>
+                    <strong>Location:</strong>
+                    <p>{{member.city}}, {{member.country}}</p>
+                </div>
+                <div>
+                    <strong>Phone:</strong>
+                    <p>{{member.phoneNumber}}</p>
+                </div>
+                <div>
+                    <strong>Email:</strong>
+                    <p>{{member.email}}</p>
+                </div>
+                <div>
+                    <strong>Other Contact:</strong>
+                    <p>{{member.otherContact}}</p>
+                </div>
+                <div>
+                    <strong>Created:</strong>
+                    <p>{{member.created}}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button [disabled]="!editMemberForm.dirty" form="editMemberForm"  type="submit" class="btn btn-success btn-block">Save Changes</button>
+            </div>
+           
+        </div>
+    </div>
+
+    <div class="col-8">
+        <tabset class="member-tabset">
+            <tab heading='About '>
+                <form #editMemberForm="ngForm" id="editMemberForm" (ngSubmit)="updateMember()"> 
+                    <h4>Description</h4>
+                    <textarea [(ngModel)]="member.description" class="form-control" name="description" rows="10"></textarea>
+                    <div class="form-inline  row-cols-3">
+                        <label for="city">City: </label>
+                        <input [(ngModel)]="member.city" type="text" name="city" class="form-control mx-2 ">
+                        <label for="country">Country: </label>
+                        <input [(ngModel)]="member.country" type="text" name="country" class="form-control mx-2">
+                        <label  for="phoneNumber">Phone number: </label>
+                        <input [(ngModel)]="member.phoneNumber" type="text" name="phoneNumber" class="form-control mx-2">
+                        <label  for="email">Email: </label>
+                        <input [(ngModel)]="member.email" type="text" name="email" class="form-control mx-2">
+                        <label for="otherContact">Other contact: </label>
+                        <input [(ngModel)]="member.otherContact" type="text" name="otherContact" class="form-control mx-2">
+                    </div>
+
+                </form>
+                
+            </tab>
+           
+            <tab heading='Photos'>
+              <app-photo-editor-member [member]="member" ></app-photo-editor-member>
+            </tab>
+
+           
+
+
+
+        </tabset>
+    </div>
+</div>
+
+
